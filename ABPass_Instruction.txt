@@ -1,0 +1,20 @@
+本系统包括两个APP，分别是ABPassClient和Movie，这两个app包含的程序文件一致，没有分开；
+ABPassClient部分涉及的.java文件：
+1.MainActivity.java为主程序；
+2.Client.java包括的功能函数有“登录”、”身份认证“、”请求签名“、”生成聚合签名“、“生成证据”。
+3.ClientSingleton.java用于生成Client对象；
+4.Signature.java为一个签名集合，包含“attribute label”、“attribute value”、“signature”以及时间戳；
+5.HttpUtil.java为http连接请求功能；
+6.ElementUtil.java功能为“Element进行Base64转码”、“Base64解码”、“对消息进行hash”、“密码转密钥”；
+
+Movie部分涉及的.java文件：
+1.MainActivity.java为主程序；
+2.VerifierSingleton.java用于生成Verifier对象；
+3.Verifier.java功能为“属性证明”、“策略编码”、“策略解码”；
+4.Movie.java包含电影视频的信息；
+5.Policy.java中包含“属性的label”、“属性值”以及对应的“Vi”，一个视频的访问策略由若干个Policy类构成；
+6.HttpUtil.java和ElementUtil.java为功能函数，这里也会用到；
+
+服务器部分涉及的.java文件：
+1.Server.java功能包括“生成公共参数”、“获取用户属性”、“签名”、“身份认证”；
+2.User.java中保存用户的M值以及用户的属性信息；

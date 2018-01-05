@@ -1,0 +1,16 @@
+HasPublicParametersBase.java
+	20: publicParametersIO=new PublicParametersIO();PublicParametersIO的构造函数为空，没有执行操作，这么
+		创建对象不能给成员函数赋值，是否是应该是PublicParametersIO.getInstanceFromFile("serverConfig.json")
+		方法来创建对象。
+		
+PublicParametersIO.java
+	24: reader = new JsonReader(new FileReader("serverConfig.json"));改为
+		reader = new JsonReader(new FileReader(filePath));
+		
+Server.java
+	69: resetParameters()方法中公共参数重新设置完之后在调用
+		    PublicParametersIO.setPublicKeyBase64(String privateKeyBase64);
+		    PublicParametersIO.setG1Base64(String g1Base64);
+		    PublicParametersIO.setG2Base64(String g2Base64);
+		方法时，这些方法中并没有将新的参数存入文件serverConfig.json中;
+		是否应该在PublicParametersIO类中新增一个方法，将新的参数存入文件中;
